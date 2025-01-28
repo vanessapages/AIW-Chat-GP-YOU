@@ -11,8 +11,8 @@ export function TopMenu({ isOpen, onToggle }: TopMenuProps) {
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-2">
         <Bot className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
-        <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          AI Loan Assistant
+        <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+          AI Workshop Assistant
         </h1>
       </div>
       <button
