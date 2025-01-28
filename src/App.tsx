@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { ChatWindow } from './components/ChatWindow';
 import { TopMenu } from './components/TopMenu';
 import { BottomMenu } from './components/BottomMenu';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, MessageSquare } from 'lucide-react';
 import { Dashboard } from './pages/Dashboard';
 import { Projects } from './pages/Projects';
 import { Resources } from './pages/Resources';
@@ -13,6 +13,7 @@ import { Support } from './pages/Support';
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isHome = location.pathname === '/';
 
@@ -55,61 +56,77 @@ function AppContent() {
         </button>
 
         <nav className="space-y-4">
+          {/* Chat Link */}
           <a 
-            href="/dashboard" 
+            href="/"
             onClick={(e) => {
               e.preventDefault();
-              window.location.href = '/dashboard';
+              navigate('/');
               setIsMenuOpen(false);
             }}
-            className="block text-gray-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-900/30 rounded-lg border border-blue-800/50 text-white hover:bg-blue-800/40 transition-colors"
           >
-            Dashboard
+            <MessageSquare className="w-5 h-5" />
+            <span>Chat</span>
           </a>
-          <a 
-            href="/projects"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/projects';
-              setIsMenuOpen(false);
-            }}
-            className="block text-gray-300 hover:text-white transition-colors"
-          >
-            Projects
-          </a>
-          <a 
-            href="/resources"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/resources';
-              setIsMenuOpen(false);
-            }}
-            className="block text-gray-300 hover:text-white transition-colors"
-          >
-            Resources
-          </a>
-          <a 
-            href="/settings"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/settings';
-              setIsMenuOpen(false);
-            }}
-            className="block text-gray-300 hover:text-white transition-colors"
-          >
-            Settings
-          </a>
-          <a 
-            href="/support"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/support';
-              setIsMenuOpen(false);
-            }}
-            className="block text-gray-300 hover:text-white transition-colors"
-          >
-            Support
-          </a>
+
+          <div className="pt-2">
+            <a 
+              href="/dashboard" 
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/dashboard');
+                setIsMenuOpen(false);
+              }}
+              className="block text-gray-300 hover:text-white transition-colors"
+            >
+              Dashboard
+            </a>
+            <a 
+              href="/projects"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/projects');
+                setIsMenuOpen(false);
+              }}
+              className="block text-gray-300 hover:text-white transition-colors mt-4"
+            >
+              Projects
+            </a>
+            <a 
+              href="/resources"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/resources');
+                setIsMenuOpen(false);
+              }}
+              className="block text-gray-300 hover:text-white transition-colors mt-4"
+            >
+              Resources
+            </a>
+            <a 
+              href="/settings"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/settings');
+                setIsMenuOpen(false);
+              }}
+              className="block text-gray-300 hover:text-white transition-colors mt-4"
+            >
+              Settings
+            </a>
+            <a 
+              href="/support"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/support');
+                setIsMenuOpen(false);
+              }}
+              className="block text-gray-300 hover:text-white transition-colors mt-4"
+            >
+              Support
+            </a>
+          </div>
         </nav>
       </div>
 
