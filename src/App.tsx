@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ChatWindow } from './components/ChatWindow';
 import { TopMenu } from './components/TopMenu';
 import { BottomMenu } from './components/BottomMenu';
+import { ChevronRight } from 'lucide-react';
+import { Dashboard } from './pages/Dashboard';
+import { Projects } from './pages/Projects';
+import { Resources } from './pages/Resources';
+import { Settings } from './pages/Settings';
+import { Support } from './pages/Support';
 
-function App() {
+function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isHome = location.pathname === '/';
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-b from-gray-950 via-blue-950 to-gray-950 text-gray-100">
@@ -18,7 +28,14 @@ function App() {
       {/* Main Content Area */}
       <div className="flex-1 overflow-hidden pb-20 pt-6">
         <div className="max-w-4xl mx-auto px-3 h-full">
-          <ChatWindow />
+          <Routes>
+            <Route path="/" element={<ChatWindow />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/support" element={<Support />} />
+          </Routes>
         </div>
       </div>
 
@@ -28,18 +45,85 @@ function App() {
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } border-l border-blue-900/50 p-6 z-50`}
       >
+        {/* Close Button */}
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          className="absolute -left-8 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors duration-200 touch-manipulation"
+          aria-label="Close menu"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
         <nav className="space-y-4">
-          <a href="#" className="block text-gray-300 hover:text-white transition-colors">Dashboard</a>
-          <a href="#" className="block text-gray-300 hover:text-white transition-colors">Projects</a>
-          <a href="#" className="block text-gray-300 hover:text-white transition-colors">Resources</a>
-          <a href="#" className="block text-gray-300 hover:text-white transition-colors">Settings</a>
-          <a href="#" className="block text-gray-300 hover:text-white transition-colors">Support</a>
+          <a 
+            href="/dashboard" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = '/dashboard';
+              setIsMenuOpen(false);
+            }}
+            className="block text-gray-300 hover:text-white transition-colors"
+          >
+            Dashboard
+          </a>
+          <a 
+            href="/projects"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = '/projects';
+              setIsMenuOpen(false);
+            }}
+            className="block text-gray-300 hover:text-white transition-colors"
+          >
+            Projects
+          </a>
+          <a 
+            href="/resources"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = '/resources';
+              setIsMenuOpen(false);
+            }}
+            className="block text-gray-300 hover:text-white transition-colors"
+          >
+            Resources
+          </a>
+          <a 
+            href="/settings"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = '/settings';
+              setIsMenuOpen(false);
+            }}
+            className="block text-gray-300 hover:text-white transition-colors"
+          >
+            Settings
+          </a>
+          <a 
+            href="/support"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = '/support';
+              setIsMenuOpen(false);
+            }}
+            className="block text-gray-300 hover:text-white transition-colors"
+          >
+            Support
+          </a>
         </nav>
       </div>
 
-      <BottomMenu />
+      {isHome && <BottomMenu />}
     </div>
   );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
+
+export default App;
