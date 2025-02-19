@@ -141,7 +141,7 @@ export function ChatWindow() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about AI, machine learning, or data science..."
+            placeholder="Ask about spicy tech debates, hot takes on AI, or just a sarcastic line or two..."
             className="flex-1 bg-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-purple-900"
             disabled={isLoading}
           />
