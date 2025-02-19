@@ -61,7 +61,7 @@ export function ChatWindow() {
         } catch (error) {
           console.error('Error initializing chat:', error);
           setMessages([{
-            content: "Hello! I'm your AI Workshop Assistant. How can I help you today?",
+            content: "Hello! I'm Giza Ai. How can I help you today?",
             isBot: true,
           }]);
         } finally {
