@@ -102,8 +102,8 @@ export function ChatWindow() {
 
   return (
     <div className="h-full flex flex-col bg-gray-950/50 rounded-lg backdrop-blur-sm border border-purple-900/50 shadow-xl relative">
-      <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-900/20 via-blue-800/20 to-purple-900/20 rounded-lg blur-sm -z-10"></div>
-      <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-800/10 via-blue-700/10 to-purple-800/10 rounded-lg blur-md -z-20"></div>
+      <div className="absolute -inset-[1px] bg-gradient-to-r from-purple-900/20 via-purple-800/20 to-purple-900/20 rounded-lg blur-sm -z-10"></div>
+      <div className="absolute -inset-[1px] bg-gradient-to-r from-purple-800/10 via-purple-700/10 to-purple-800/10 rounded-lg blur-md -z-20"></div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message, index) => (
@@ -150,7 +150,7 @@ export function ChatWindow() {
             className={`bg-purple-900 text-white rounded-lg px-4 py-2 transition-colors duration-200 flex items-center gap-2 ${
               isLoading 
                 ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-blue-800'
+                : 'hover:bg-purple-800'
             }`}
             disabled={isLoading}
           >
